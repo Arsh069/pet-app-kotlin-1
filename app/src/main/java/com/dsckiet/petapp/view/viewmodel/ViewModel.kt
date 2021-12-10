@@ -16,6 +16,8 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     val feedData: LiveData<FeedsData>
     val upcomingData: LiveData<ItemUpcoming>
     val recentData: LiveData<ItemRecent>
+    //////////////////////////////////
+    val messages:LiveData<Message>
 
     private val repository = Repository(application)
 
@@ -26,6 +28,8 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
         this.feedData = repository.feedsData
         this.upcomingData = repository.upcomingData
         this.recentData = repository.recentData
+        ////////////////////////////////////
+        this.messages=repository.msgData
     }
 
     fun postRegister(postRegister: PostOwnerData) {
@@ -35,11 +39,14 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     fun postLogin(password: String, username: String) {
         repository.postLogin(password, username)
     }
-
     fun chatsList(){
-        repository.getChatList()
-    }
 
+    }
+//////////////////////////////////////////
+    fun MessagesList(cookie: String){
+        repository.getMessageList(cookie)
+    }
+////////////////////////////////////////////
     fun feedsList(cookie: String){
         repository.getFeedsList(cookie)
     }

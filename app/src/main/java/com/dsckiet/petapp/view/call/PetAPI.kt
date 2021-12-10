@@ -1,9 +1,6 @@
 package com.dsckiet.petapp.view.call
 
-import com.dsckiet.petapp.view.model.LoginResponse
-import com.dsckiet.petapp.view.model.PostLogin
-import com.dsckiet.petapp.view.model.PostOwnerData
-import com.dsckiet.petapp.view.model.RegisterResponse
+import com.dsckiet.petapp.view.model.*
 import com.dsckiet.petapp.view.model.get.feeds.FeedsData
 import retrofit2.Call
 import retrofit2.http.*
@@ -43,4 +40,10 @@ interface PetAPI {
         @Header("Cookie")
         cookie: String
     ) : Call<FeedsData>
+
+    @GET("/chat/chat/django/")
+    fun getChat(
+        @Header("Cookie")
+        cookie: String
+    ):Call<Message>
 }

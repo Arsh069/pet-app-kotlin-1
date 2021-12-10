@@ -22,6 +22,7 @@ class Repository constructor(val application: Application) {
     val feedsData = MutableLiveData<FeedsData>()
     val upcomingData = MutableLiveData<ItemUpcoming>()
     val recentData = MutableLiveData<ItemRecent>()
+    val msgData=MutableLiveData<Message>()
     val TAG = "Repository"
 
     fun postRegister(postRegister: PostOwnerData) {
@@ -80,9 +81,23 @@ class Repository constructor(val application: Application) {
             }
         })
     }
+/////////////////////////////////////////////
+    fun getMessageList(cookie: String) {
+        val retrofitService = RetrofitInstance.getClient(application)
+        val callAPI=retrofitService.getChat(cookie)
+    callAPI.enqueue(object : Callback<Message>{
+        override fun onResponse(call: Call<Message>, response: Response<Message>) {
+            TODO("Not yet implemented")
 
-    fun getChatList() {}
+        }
 
+        override fun onFailure(call: Call<Message>, t: Throwable) {
+            TODO("Not yet implemented")
+        }
+
+    })
+    }
+//////////////////////////////////////////////
     fun getFeedsList(cookie: String) {
 
         val retrofitService = RetrofitInstance.getClient(application)

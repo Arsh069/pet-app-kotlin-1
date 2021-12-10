@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dsckiet.petapp.R
@@ -20,7 +21,6 @@ class ChatsAdapter(private val context: Context) : RecyclerView.Adapter<ChatsAda
         val itemView =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_chats, parent, false)
-
         return ViewHolder(itemView)
     }
 
@@ -30,6 +30,12 @@ class ChatsAdapter(private val context: Context) : RecyclerView.Adapter<ChatsAda
         holder.name.text = single.name
         holder.lastMessage.text = single.messages
         holder.chatTime.text = single.chatTime
+
+
+        //navigate to chat page
+        holder.itemView.setOnClickListener {
+           it.findNavController().navigate(R.id.action_forumFragment2_to_particularChatFragment)
+        }
     }
 
     override fun getItemCount(): Int {

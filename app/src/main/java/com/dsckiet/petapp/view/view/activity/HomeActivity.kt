@@ -31,12 +31,28 @@ class HomeActivity : AppCompatActivity() {
                     bottom_nav.visibility = View.VISIBLE
                 }
             }
+            when (destination.id){
+                R.id.particularChatFragment ->
+                {
+                    bottom_nav.visibility =View.GONE
+                }
+                else -> {
+                    bottom_nav.visibility=View.VISIBLE
+                }
+
+            }
         }
 
         bottom_nav.setupWithNavController(navController)
     }
 
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
+
+
+
 }
